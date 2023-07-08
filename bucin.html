@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Buat Kamu 😼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+    }
+    /* Add your custom styles here */
+  </style>
+</head>
+
+<body>
+  <div id="foto" class="foto" style="display:none">
+    <div class="image">
+      <img id="ftKm" src="https://i.postimg.cc/8zxYn2xG/FB-IMG-16354292315443416.jpg" width="100px" height="100px" />
+      <img id="ftAk" style="opacity:0;position:absolute;" src="https://i.postimg.cc/KzDsjRjc/FB-IMG-16354292358400063.jpg" width="100px" height="100px" />
+    </div>
+    <span id="sp1">
+      <b id="namamu"></b>
+      <div id="lope" style="display:inline-block;align-items:center;justify-content:center;">&#9829;</div>
+    </span>
+    <div id="sp2" style="display:none;"><span style="font-size:13px;" id="text3"></span></div>
+    <div id="sp3" style="display:none;"><span id="text4"></span></div>
+  </div>
+
+  <div id='Content' style="display:none">
+    <div class="kolomteks">
+      <p id="text"></p>
+      <p style="font-size:.80rem;" id="text2"></p>
+    </div>
+    <div id="trm" class="contTom">
+      <a style="margin:12px 12px 12px 0;" class='button' onClick="lanjutan();">Next Sini Sayang</a>
+    </div>
+    <a id="whs" class='button whatsapp' onClick='bukaWa();'>Nggak Usah Di Klick Bambang Cuman Tes</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script type="text/javascript">
+    var h = (new Date()).getHours();
+    var m = (new Date()).getMinutes();
+    var s = (new Date()).getSeconds();
+    if (h >= 4 && h < 10) {
+      var Ucapan = "Selamat Pagi, Cantik ❤";
+    } else if (h >= 10 && h < 15) {
+      var Ucapan = "Selamat Siang, Cantik 💕";
+    } else if (h >= 15 && h < 18) {
+      var Ucapan = "Selamat Sore, Cantik 💛";
+    } else {
+      var Ucapan = "Selamat Malam, Cantik 💕";
+    }
+
+    var author = 'Jaki 😶‍🌫️';
+    var yy;
+
+    var i = 0, text;
+    text = "Message :";
+    var u = 0, text2; // Text2 ada di if(nama)
+    var o = 0, text3;
+    text3 = "Coba Lihat Sini                                 ";
+    text5 = "Lopyu. Awkwkwkk 🫠";
+    var a = 0, text4; // Text4 ada di if(nama)
+
+    async function mulai() {
+      const { value: nama } = await Swal.fire({
+        title: 'Buat Kamu Nih, Buka Ya',
+        text: 'Masukkan Nama Kamu:',
+        input: 'text',
+        inputPlaceholder: 'Nama kamu...',
+        confirmButtonText: 'Buka',
+        allowOutsideClick: false,
+        showCancelButton: false,
+      });
+
+      if (nama) {
+        play();
+        window.nama = nama;
+        yy = nama;
+        text2 = `Dari: ${author}, Buat: ${window.nama}.`;
+        text4 = 'Intinya Lopyu Segudang 🐣';
+
+        await Swal.fire({
+          title: `Awwwww, Jadi Sayang ${window.nama} :v`,
+          text: Ucapan,
+        });
+
+        ketik();
+        showDiv();
+        showFt();
+
+        document.getElementById('namamu').innerHTML = `Halo, ${yy}`;
+      } else {
+        mulai();
+      }
+    }
+
+    async function lanjutan() {
+      const { value: sayang } = await Swal.fire({
+        title: 'Jawab Nih 🫢',
+        text: 'Apakah Kamu Sayang Sama Aku?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Sayang Kok',
+        denyButtonText: 'Nggak Sayang',
+        allowOutsideClick: false,
+      });
+
+      if (sayang) {
+        window.sayang = 'sayang';
+        lanjutan2();
+      } else {
+        window.sayang = 'enggak sayang';
+        window.persen = '%3A%2F';
+        Swal.fire('Anak Kontol Jawab Sayang Kek Meski Pura-Pura Pun Gpp, Bay Memek!');
+        setTimeout(() => {
+      window.location.href = 'https://doujinku.co';
+    }, 3000);
+      }
+    }
+
+    async function lanjutan2() {
+  const { value: persen } = await Swal.fire({
+    title: 'Emang Sayangnya Berapa?',
+    text: 'Tentukan Persentase Sayang Kamu (0-100%)',
+    icon: 'question',
+    input: 'range',
+    inputLabel: '0-100%',
+    inputAttributes: {
+      min: 0,
+      max: 100,
+    },
+    allowOutsideClick: false,
+    inputValue: 90,
+  });
+
+  if (persen) {
+    window.persen = persen + '%';
+    iloveu();
+    siap();
+    whs();
+
+    if (persen < 30) {
+      Swal.fire(`Lu Ada Dendam Ama Gw Kan Mek Kok Cuman ${persen}%!`);
+    } else if (persen >= 30 && persen < 60) {
+      Swal.fire(`Lu Sayang Apa Sange Doang Ama Gw Co, Apaan Cuman ${persen}% `);
+    } else if (persen >= 60 && persen < 70) {
+      Swal.fire(`Nanggung Bet Sayangnya Cuman ${persen}% Anjing!`);
+    } else {
+      await Swal.fire(`Makasih Udah Sayang Sama Aku ${persen}%`);
+    iloveu();
+    siap();
+    whs();
+    }
+  }
+}
+
+
+    function bukaWa() {
+      window.location = `https://wa.me/6283890422366?text=*Hai Kamu🥰%20Udah Jawab Ya.*%0A*Ternyata Kamu Sayang Ke Aku%20${window.persen}*%0A*Makasih Ya...*%0A*Love You Cantik 🥰*`;
+    }
+
+    mulai();
+  </script>
+</body>
+
+</html>
